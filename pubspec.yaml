@@ -1,0 +1,46 @@
+name: kuputun
+description: KupuTUN — fast, smart, open-source proxy/VPN client (Xray-core + sing-box).
+publish_to: none
+version: 1.0.0+2010
+
+environment:
+  sdk: ">=3.8.0 <4.0.0"
+  flutter: ">=3.35.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.1.2
+  dynamic_color: ^1.7.0
+  ffi: ^2.1.3
+  cryptography: ^2.7.0
+  flutter_secure_storage: ^9.2.2
+  path_provider: ^2.1.4
+  sqflite: ^2.4.1
+  sqflite_common_ffi: ^2.3.4
+  device_info_plus: ^11.1.0
+  connectivity_plus: ^6.1.0
+  network_info_plus: ^6.1.0
+  package_info_plus: ^8.1.0
+  flutter_local_notifications: ^18.0.1
+  url_launcher: ^6.3.1
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^6.0.2
+  file_picker: ^8.1.4
+  share_plus: ^11.0.0
+  app_links: ^6.3.2
+  tray_manager: ^0.2.4
+  window_manager: ^0.4.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/tray/
+    - assets/branding/logo_192.png

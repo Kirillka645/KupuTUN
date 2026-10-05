@@ -1,0 +1,21 @@
+# Normalise line endings across platforms.
+#
+# The shell scripts in scripts/ are run by bash on Linux CI and in Git Bash on
+# Windows; CRLF endings make them fail with "bad interpreter" / syntax errors, so
+# they must stay LF even when checked out on Windows.
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binaries: never touch.
+*.ico binary
+*.png binary
+*.jpg binary
+*.jar binary
+*.aar binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.jks binary
+*.keystore binary
+*.zip binary
