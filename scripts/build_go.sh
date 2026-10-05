@@ -8,7 +8,12 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT/go"
 
 TAGS="${KUPUTUN_TAGS:-with_quic,with_utls,with_wireguard,with_gvisor}"
-LDFLAGS="-s -w -buildid= -X github.com/xtls/xray-core/core.build=kuputun"
+# sing-box leaves constant.Version at "unknown" unless the linker sets it, and the
+# app's Settings screen prints that value verbatim. Derive it from go.mod so it
+# cannot drift from the pinned dependency.
+SINGBOX_VERSION="$(go list -m -f '{{.Version}}' github.com/sagernet/sing-box 2>/dev/null | sed 's/^v//')"
+[ -n "$SINGBOX_VERSION" ] || SINGBOX_VERSION=unknown
+LDFLAGS="-s -w -buildid= -X github.com/xtls/xray-core/core.build=kuputun -X github.com/sagernet/sing-box/constant.Version=$SINGBOX_VERSION"
 export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-$(git -C "$ROOT" log -1 --format=%ct 2>/dev/null || echo 1700000000)}"
 OUT="$ROOT/build/native"
 mkdir -p "$OUT"

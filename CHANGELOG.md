@@ -87,6 +87,10 @@
   (ошибка 35) — добавлены повторы и автоматический откат на `Invoke-WebRequest`;
   распаковка работает и без `unzip` (bsdtar из Windows). Можно переопределить зеркало
   через `KUPUTUN_WINTUN_URL`.
+- **`scripts/build_go.sh`**: версия sing-box (`constant.Version`) не проставлялась
+  линкером, поэтому в «Настройки → О приложении → Ядра» показывалось
+  `singbox · unknown`. Версия берётся из `go.mod` и передаётся через `-X`, так что не
+  может разойтись с закреплённой зависимостью.
 - В репозиторий добавлены цель `windows/`, Gradle wrapper и `.gitattributes`
   (shell-скрипты обязаны оставаться с LF, иначе падают в CI и Git Bash).
 - `android/app/build.gradle.kts`: `ndk.abiFilters` намеренно не задаётся — Gradle
